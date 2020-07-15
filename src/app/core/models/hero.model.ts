@@ -1,7 +1,7 @@
 export class Hero{
-    private _id:number;
-    private _name:string;
-    private _score:number;
+    private _id?:number;
+    private _name?:string;
+    private _score?:number;
 
     public constructor(){}
 

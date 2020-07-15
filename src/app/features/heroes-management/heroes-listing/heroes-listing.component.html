@@ -1,1 +1,21 @@
-<p>heroes-listing works!</p>
+<div >
+
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="horizontal">
+      <li ngbNavItem="dashboard">
+        <a ngbNavLink>Dashboard</a>
+        <ng-template ngbNavContent>
+            <app-heroes-listing-dashboard></app-heroes-listing-dashboard>
+        </ng-template>
+        
+      </li>
+      <li ngbNavItem="table">
+        <a ngbNavLink>Table</a>
+        <ng-template ngbNavContent>
+            <app-heroes-listing-table></app-heroes-listing-table>
+        </ng-template>
+        
+    </ul>
+  
+    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+    
+</div>
