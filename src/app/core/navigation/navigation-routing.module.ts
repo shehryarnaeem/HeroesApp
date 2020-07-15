@@ -7,6 +7,15 @@ const routes: Routes = [
   {
     path:"",
     component:NavigationComponent,
+    children:[
+      {
+        path:"heroes",
+        loadChildren:()=>
+        import("../../features/heroes-management/heroes-management.module").then(
+          (m:any)=>m.HeroesManagementModule
+        )
+      }
+    ]
   }
 ];
 
