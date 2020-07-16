@@ -53,7 +53,7 @@ export class HeroDetailsModalComponent implements OnInit {
 
     this.detailsForm = this.formBuilder.group({
       name:[hero.name,[Validators.required]],
-      score:[hero.score,[Validators.required]]
+      score:[hero.score,[Validators.required,Validators.pattern(/^[-+]?[0-9]+$/)]]
     })
 
   }

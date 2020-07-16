@@ -37,6 +37,9 @@
              <div *ngIf="detailsFormControl.score.errors.required">
                Required!
              </div>
+             <div *ngIf="detailsFormControl.score.errors.pattern">
+              Invalid Input!
+            </div>
          </div>
         </div>
 
@@ -46,11 +49,10 @@
       <div class="col-md-4"></div>
       <div class="col-md-4 text-center">
         <button class="btn btn-outline-info waves-effect
-        waves-light"
-        (click)="onSave()"
-        >
-            Save
-        </button>
+        waves-light save_button"
+        (click) = "onSave()"
+        [disabled] = "detailsForm.invalid"
+        >Save</button>
       </div>
       <div class="col-md-4"></div>
     </div>
