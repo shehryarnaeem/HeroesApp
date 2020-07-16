@@ -9,7 +9,7 @@ const routes: Routes = [
     component:NavigationComponent,
     children:[
       {
-        path:"heroes",
+        path:"",
         loadChildren:()=>
         import("../../features/heroes-management/heroes-management.module").then(
           (m:any)=>m.HeroesManagementModule
