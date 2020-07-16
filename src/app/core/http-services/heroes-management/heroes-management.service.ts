@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Hero} from "../../models/hero.model";
 import { Observable, of } from 'rxjs';
+
+import {Hero} from "../../models/hero.model";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,22 +20,22 @@ export class HeroesManagementService {
       score:500
     },
     {
-      id:1,
+      id:3,
       name:"Super Man",
       score:100
     },
     {
-      id:2,
+      id:4,
       name:"Magneto Man",
       score:500
     },
     {
-      id:1,
+      id:5,
       name:"Wolveriene",
       score:100
     },
     {
-      id:2,
+      id:6,
       name:"Spider Man",
       score:500
     }
@@ -80,4 +82,5 @@ export class HeroesManagementService {
     if(index>-1) this.heroes[index]=hero;
     
   }
+  
 }

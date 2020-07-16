@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from 'src/app/core/models/hero.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { Hero } from 'src/app/core/models/hero.model';
 import { HeroDetailsModalComponent } from '../../hero-details-modal/hero-details-modal.component';
 
 @Component({
