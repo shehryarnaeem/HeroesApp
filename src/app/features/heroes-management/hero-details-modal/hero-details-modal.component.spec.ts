@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { HeroDetailsModalComponent } from './hero-details-modal.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -83,4 +83,19 @@ describe('HeroDetailsModalComponent', () => {
     .toBeTruthy();
 
   })
+
+
+  it("Button should close modal",fakeAsync(()=>{
+    spyOn(component,"onClose");
+
+    let closeButton = fixture.debugElement.nativeElement
+    .querySelector(".close")
+    closeButton.click();
+
+    tick();
+    expect(component.onClose)
+      .toHaveBeenCalled();
+
+  }))
+
 });
