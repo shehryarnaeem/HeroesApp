@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroDetailsModalComponent } from './hero-details-modal.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
 
 describe('HeroDetailsModalComponent', () => {
   let component: HeroDetailsModalComponent;
@@ -8,7 +11,15 @@ describe('HeroDetailsModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroDetailsModalComponent ]
+      declarations: [ HeroDetailsModalComponent ],
+      imports:[
+        
+      ],
+      providers:[
+        FormBuilder,
+        NgbActiveModal,
+        HeroesManagementService
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +30,7 @@ describe('HeroDetailsModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Hero Details Modal', () => {
     expect(component).toBeTruthy();
   });
 });
