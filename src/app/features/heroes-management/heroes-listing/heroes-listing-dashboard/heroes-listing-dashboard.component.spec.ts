@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroesListingDashboardComponent } from './heroes-listing-dashboard.component';
+import { By } from '@angular/platform-browser';
 
 describe('HeroesListingDashboardComponent', () => {
   let component: HeroesListingDashboardComponent;
@@ -19,7 +20,20 @@ describe('HeroesListingDashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create Hero Listing Dashboard', () => {
+    
+    expect(component)
+    .toBeTruthy();
+
   });
+
+  it("should render Top Hero List",() => {
+
+    let cardList:any[] = fixture.debugElement.queryAll(By.css(".hero_card"))
+
+    expect(cardList.length)
+    .toBe(component.heroes.length);
+
+  })
+
 });
