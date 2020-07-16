@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormGroup,FormBuilder, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Hero } from 'src/app/core/models/hero.model';
+import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
 
 @Component({
   selector: 'app-hero-details-modal',
@@ -17,7 +18,8 @@ export class HeroDetailsModalComponent implements OnInit {
 
   constructor(
   private formBuilder:FormBuilder,
-  private modalService:NgbActiveModal
+  private modalService:NgbActiveModal,
+  private heroService:HeroesManagementService
   ) { }
 
   ngOnInit()
@@ -35,11 +37,44 @@ export class HeroDetailsModalComponent implements OnInit {
     })
   }
 
-  public onClose()
+  private get detailsFormValue()
+  : Hero {
+    return this.detailsForm.value;
+  }
+
+  public onClose(status?:boolean)
   : void {
 
-    this.modalService.close();
+    this.modalService.close(status);
   
   }
+
+
+  public onSave()
+  : void {
+    if(this.detailsForm.invalid) return
+
+    if(this.hero) this.editHero()
+    else this.saveHero(this.detailsForm.value as Hero)
+    this.onClose(true);
+
+  }
+
+
+  private editHero()
+  : void {
+    this.hero.name=this.detailsFormValue.name
+    this.hero.score=this.detailsFormValue.score;
+    this.heroService.editHero(this.hero);
+
+  }
+
+  private saveHero(hero:Hero)
+  : void {
+
+    this.heroService.addNewHero(hero);
+
+  }
+
 
 }
