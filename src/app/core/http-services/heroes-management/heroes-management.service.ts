@@ -82,5 +82,15 @@ export class HeroesManagementService {
     if(index>-1) this.heroes[index]=hero;
     
   }
+
+
+  public deleteHeroByID(id:number)
+  : void {
+
+    let index:number = this.heroes.findIndex(item=>item.id == id)
+
+    if(index > -1) this.heroes.splice(index,1)
+
+  }
   
 }

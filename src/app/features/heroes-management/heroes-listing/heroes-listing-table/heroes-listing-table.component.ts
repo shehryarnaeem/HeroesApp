@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Hero } from 'src/app/core/models/hero.model';
 import { HeroDetailsModalComponent } from '../../hero-details-modal/hero-details-modal.component';
+import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
 
 @Component({
   selector: 'app-heroes-listing-table',
@@ -15,7 +16,8 @@ export class HeroesListingTableComponent implements OnInit {
   heroes:Hero[]=[];
 
   constructor(
-    private modalService:NgbModal
+    private modalService:NgbModal,
+    private heroService:HeroesManagementService
   ) { }
 
   ngOnInit()
@@ -26,6 +28,13 @@ export class HeroesListingTableComponent implements OnInit {
   : void {
     const modalRef=this.modalService.open(HeroDetailsModalComponent);
     modalRef.componentInstance.hero=hero;
+  }
+
+  onDelete(id:number)
+  : void {
+
+    this.heroService.deleteHeroByID(id);
+    
   }
 
 }

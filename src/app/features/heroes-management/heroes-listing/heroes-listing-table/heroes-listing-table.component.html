@@ -5,9 +5,9 @@
 
             </thead>
             <tbody>
-                <tr *ngFor="let hero of heroes">
+                <tr *ngFor="let hero of heroes;index as i">
                     <td>
-                        {{hero.id}}
+                        {{i+1}}
                     </td>
                     <td>
                         {{hero.name}}
@@ -16,11 +16,20 @@
                         <div class="row">
                             <button  type="button" 
                             class="btn btn-outline-info waves-effect
-                            waves-light"
+                            waves-light item_actions"
                             (click)="onEdit(hero)"
                             >
                             Edit
                         </button>
+
+                        <button  type="button" 
+                            class="btn btn-outline-info waves-effect
+                            waves-light item_actions"
+                            (click)="onDelete(hero.id)"
+                            >
+                            Delete
+                        </button>
+
                         </div>
                     </td>
                 </tr>
