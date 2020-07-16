@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FormGroup,FormBuilder, Validators} from '@angular/forms';
+import {FormGroup,FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { Hero } from 'src/app/core/models/hero.model';
@@ -32,6 +32,22 @@ export class HeroDetailsModalComponent implements OnInit {
   }
 
 
+  private get detailsFormValue()
+  : Hero {
+
+    return this.detailsForm.value;
+  
+  }
+
+
+  public get detailsFormControl()
+  : any {
+    
+    return this.detailsForm.controls
+
+  }
+
+
   private initDetailsForm(hero:Hero)
   : void{
 
@@ -40,14 +56,6 @@ export class HeroDetailsModalComponent implements OnInit {
       score:[hero.score,[Validators.required]]
     })
 
-  }
-
-
-  private get detailsFormValue()
-  : Hero {
-
-    return this.detailsForm.value;
-  
   }
 
 
@@ -61,7 +69,7 @@ export class HeroDetailsModalComponent implements OnInit {
 
   public onSave()
   : void {
-  
+    
     if(this.detailsForm.invalid) return
 
     if(this.hero) this.editHero()
@@ -73,6 +81,7 @@ export class HeroDetailsModalComponent implements OnInit {
 
   private editHero()
   : void {
+
     this.hero.name = this.detailsFormValue.name
     this.hero.score = this.detailsFormValue.score;
     this.heroService.editHero(this.hero);

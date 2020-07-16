@@ -16,6 +16,12 @@
             formControlName="name" 
             >
           </div>
+          <div *ngIf="detailsFormControl.name.errors"
+          >
+           <div *ngIf="detailsFormControl.name.errors.required">
+             Required!
+           </div>
+       </div>
         </div>
 
         <div class="form-group">
@@ -26,6 +32,12 @@
               formControlName="score"
               >
             </div>
+            <div *ngIf="detailsFormControl.score.errors"
+            >
+             <div *ngIf="detailsFormControl.score.errors.required">
+               Required!
+             </div>
+         </div>
         </div>
 
     </form>
