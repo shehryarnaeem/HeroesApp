@@ -8,7 +8,7 @@ import {Hero} from "../../models/hero.model";
 })
 export class HeroesManagementService {
 
-  private heroes:Hero[]=[
+   public heroes:Hero[] = [
     {
       id:1,
       name:"Iron Man",
@@ -55,6 +55,8 @@ export class HeroesManagementService {
 
   public getTopHeroes(nHeroes:number=this.heroes.length)
   : Observable<Hero[]> {
+
+    if(nHeroes>this.heroes.length) nHeroes=this.heroes.length
 
     let heroes:Hero[]=this.heroes.sort((a:Hero,b:Hero)=>{
       return b.score-a.score
