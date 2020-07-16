@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { HeroDetailsModalComponent } from './hero-details-modal.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { HeroDetailsModalComponent } from './hero-details-modal.component';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
-import { By } from '@angular/platform-browser';
 
 describe('HeroDetailsModalComponent', () => {
   let component: HeroDetailsModalComponent;
@@ -86,6 +85,7 @@ describe('HeroDetailsModalComponent', () => {
 
 
   it("Button should close modal",fakeAsync(()=>{
+   
     spyOn(component,"onClose");
 
     let closeButton = fixture.debugElement.nativeElement
@@ -94,7 +94,7 @@ describe('HeroDetailsModalComponent', () => {
 
     tick();
     expect(component.onClose)
-      .toHaveBeenCalled();
+    .toHaveBeenCalled();
 
   }))
 
