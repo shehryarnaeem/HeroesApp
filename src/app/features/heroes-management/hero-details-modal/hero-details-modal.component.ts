@@ -25,23 +25,31 @@ export class HeroDetailsModalComponent implements OnInit {
 
   ngOnInit()
   : void {
+
     if(this.hero) this.initDetailsForm(this.hero)
     else this.initDetailsForm(new Hero())
+
   }
 
 
   private initDetailsForm(hero:Hero)
   : void{
-    this.detailsForm=this.formBuilder.group({
+
+    this.detailsForm = this.formBuilder.group({
       name:[hero.name,[Validators.required]],
       score:[hero.score,[Validators.required]]
     })
+
   }
+
 
   private get detailsFormValue()
   : Hero {
+
     return this.detailsForm.value;
+  
   }
+
 
   public onClose(status?:boolean)
   : void {
@@ -53,6 +61,7 @@ export class HeroDetailsModalComponent implements OnInit {
 
   public onSave()
   : void {
+  
     if(this.detailsForm.invalid) return
 
     if(this.hero) this.editHero()
@@ -64,8 +73,8 @@ export class HeroDetailsModalComponent implements OnInit {
 
   private editHero()
   : void {
-    this.hero.name=this.detailsFormValue.name
-    this.hero.score=this.detailsFormValue.score;
+    this.hero.name = this.detailsFormValue.name
+    this.hero.score = this.detailsFormValue.score;
     this.heroService.editHero(this.hero);
 
   }
