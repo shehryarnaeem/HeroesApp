@@ -13,7 +13,7 @@ import { HeroesManagementService } from 'src/app/core/http-services/heroes-manag
 export class HeroesListingTableComponent implements OnInit {
 
   @Input()
-  heroes:Hero[]=[];
+  public heroes:Hero[]=[];
 
   constructor(
     private modalService:NgbModal,
