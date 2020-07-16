@@ -24,17 +24,27 @@ export class HeroesListingTableComponent implements OnInit {
   : void {
   }
 
-  onEdit(hero:Hero)
+  public onEdit(hero:Hero)
   : void {
+
     const modalRef=this.modalService.open(HeroDetailsModalComponent);
     modalRef.componentInstance.hero=hero;
+
   }
 
-  onDelete(id:number)
+  public onDelete(id:number)
   : void {
 
     this.heroService.deleteHeroByID(id);
-    
+
+  }
+
+
+  public onAdd()
+  : void {
+
+    const modalRef=this.modalService.open(HeroDetailsModalComponent);
+
   }
 
 }
