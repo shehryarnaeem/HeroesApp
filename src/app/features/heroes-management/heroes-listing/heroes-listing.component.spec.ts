@@ -41,7 +41,7 @@ describe('HeroesListingComponent', () => {
     let retrievedOptions:NodeList = element.querySelectorAll("li")
     let options:string[] = ["Dashboard","Table"]
     
-    expect(retrievedOptions.length).toBe(2);
+    expect(retrievedOptions.length).toBe(options.length);
 
     for(let i = 0; i < options.length ; i++){
       
