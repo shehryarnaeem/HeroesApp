@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from 'src/app/core/models/hero.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HeroDetailsModalComponent } from '../../hero-details-modal/hero-details-modal.component';
 
 @Component({
   selector: 'app-heroes-listing-table',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroesListingTableComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  heroes:Hero[]=[];
 
-  ngOnInit(): void {
+  constructor(
+    private modalService:NgbModal
+  ) { }
+
+  ngOnInit()
+  : void {
+  }
+
+  onEdit(hero:Hero)
+  : void {
+    const modalRef=this.modalService.open(HeroDetailsModalComponent);
+    modalRef.componentInstance.hero=hero;
   }
 
 }
