@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+
 
 import { Hero } from 'src/app/core/models/hero.model';
 import { HeroDetailsModalComponent } from '../../hero-details-modal/hero-details-modal.component';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
-
+import {DELETE_SUCCESS} from "src/app/shared/constants/heroes.constants";
 @Component({
   selector: 'app-heroes-listing-table',
   templateUrl: './heroes-listing-table.component.html',
@@ -17,7 +19,8 @@ export class HeroesListingTableComponent implements OnInit {
 
   constructor(
     private modalService:NgbModal,
-    private heroService:HeroesManagementService
+    private heroService:HeroesManagementService,
+    private toastService:ToastrService
   ) { }
 
   ngOnInit()
@@ -36,6 +39,7 @@ export class HeroesListingTableComponent implements OnInit {
   : void {
 
     this.heroService.deleteHeroByID(id);
+    this.toastService.success(DELETE_SUCCESS);
 
   }
 

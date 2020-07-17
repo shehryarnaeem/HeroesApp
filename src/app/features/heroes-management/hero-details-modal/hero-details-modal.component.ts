@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormGroup,FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+
 
 import { Hero } from 'src/app/core/models/hero.model';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
-
+import {ADDED_SUCCESS, SAVE_SUCCESS} from "src/app/shared/constants/heroes.constants";
 @Component({
   selector: 'app-hero-details-modal',
   templateUrl: './hero-details-modal.component.html',
@@ -20,7 +22,8 @@ export class HeroDetailsModalComponent implements OnInit {
   constructor(
   private formBuilder:FormBuilder,
   private modalService:NgbActiveModal,
-  private heroService:HeroesManagementService
+  private heroService:HeroesManagementService,
+  private toastService:ToastrService
   ) { }
 
   ngOnInit()
@@ -85,6 +88,8 @@ export class HeroDetailsModalComponent implements OnInit {
     this.hero.name = this.detailsFormValue.name
     this.hero.score = this.detailsFormValue.score;
     this.heroService.editHero(this.hero);
+    this.toastService.success(SAVE_SUCCESS);
+
 
   }
 
@@ -92,6 +97,7 @@ export class HeroDetailsModalComponent implements OnInit {
   : void {
 
     this.heroService.addNewHero(hero);
+    this.toastService.success(ADDED_SUCCESS);
 
   }
 

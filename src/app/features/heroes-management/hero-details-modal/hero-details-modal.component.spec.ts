@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { HeroDetailsModalComponent } from './hero-details-modal.component';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
+import { ToastrService } from 'ngx-toastr';
 
 describe('HeroDetailsModalComponent', () => {
   let component: HeroDetailsModalComponent;
@@ -19,7 +20,8 @@ describe('HeroDetailsModalComponent', () => {
       providers:[
         FormBuilder,
         NgbActiveModal,
-        HeroesManagementService
+        HeroesManagementService,
+        ToastrService
       ]
     })
     .compileComponents();
