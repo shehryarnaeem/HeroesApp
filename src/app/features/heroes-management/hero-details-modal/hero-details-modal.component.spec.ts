@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
+
 
 import { HeroDetailsModalComponent } from './hero-details-modal.component';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
-import { ToastrService } from 'ngx-toastr';
 
 describe('HeroDetailsModalComponent', () => {
   let component: HeroDetailsModalComponent;
@@ -15,7 +16,7 @@ describe('HeroDetailsModalComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HeroDetailsModalComponent ],
       imports:[
-        
+        ToastrModule.forRoot()
       ],
       providers:[
         FormBuilder,

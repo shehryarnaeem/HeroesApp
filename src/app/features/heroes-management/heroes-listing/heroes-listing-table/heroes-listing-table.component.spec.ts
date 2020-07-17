@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+
 
 import { HeroesListingTableComponent } from './heroes-listing-table.component';
 import { HeroesManagementService } from 'src/app/core/http-services/heroes-management/heroes-management.service';
@@ -10,7 +12,13 @@ describe('HeroesListingTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroesListingTableComponent ]
+      declarations: [ HeroesListingTableComponent ],
+      imports:[
+        ToastrModule.forRoot()
+      ],
+      providers:[
+        ToastrService
+      ]
     })
     .compileComponents();
   }));
