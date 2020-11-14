@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import {HeroesManagementService} from "../../../core/http-services/heroes-management/heroes-management.service";
 import { Hero } from 'src/app/core/models/hero.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-heroes-listing',
@@ -16,7 +17,7 @@ export class HeroesListingComponent implements OnInit,OnDestroy {
   private subscriptions:Subscription=new Subscription();
 
   constructor(
-    private heroService:HeroesManagementService
+    private activatedRoute:ActivatedRoute
   ) { }
   
  
@@ -35,14 +36,9 @@ export class HeroesListingComponent implements OnInit,OnDestroy {
 
 
   getHeroes()
-  :void{
-    
-    let subs$=this.heroService.getHeroesList().subscribe((res:Hero[])=>{
-      this.heroes=res;
-    })
-
-    this.subscriptions.add(subs$);
-
+  : void {
+    this.heroes = this.activatedRoute.snapshot.data.heroes as Hero[];
+    console.log(this.heroes)
   }
 
 

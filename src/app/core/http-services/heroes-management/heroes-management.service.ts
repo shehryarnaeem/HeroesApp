@@ -46,9 +46,9 @@ export class HeroesManagementService {
 
 
   public getHeroesList()
-  : Observable<Hero[]> {
+  : Promise<Hero[]> {
 
-    return of(this.heroes)
+    return of(this.heroes).toPromise();
 
   }
 
